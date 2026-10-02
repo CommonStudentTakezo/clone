@@ -1,0 +1,25 @@
+# Chave de assinatura da extensão — NÃO apague nem compartilhe
+
+`extension_key.pem` é a chave privada que dá à extensão (pasta
+`BrowserExtension`) um ID FIXO e permanente:
+
+    lhakmhioicoklhgmkpemilobjfddiggi
+
+Esse ID já está embutido em `BrowserExtension/manifest.json` (campo "key",
+que é a chave PÚBLICA correspondente — compartilhar essa não tem problema).
+
+## Isso agora é automático
+
+O app gera o `BrowserExtension/extension.crx` sozinho (formato CRX3, gerado
+em C# usando essa chave — não depende mais do Chrome instalado). Isso
+acontece automaticamente sempre que você clica em "Ativar proteções
+permanentes", e é regenerado sozinho se os arquivos da extensão mudarem.
+Você não precisa fazer nada manualmente.
+
+## Se você perder essa chave
+
+Se `extension_key.pem` for perdida e você gerar outra, o ID da extensão
+muda, e o Chrome vai continuar tentando instalar o ID antigo (que não existe
+mais). Nesse caso, seria preciso recalcular o novo ID e atualizar a
+constante `ExtensionId` em `App/Services/ExtensionInstaller.cs` e o campo
+"key" em `manifest.json` — guarde essa chave num lugar seguro.

@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Cold Turkey Clone - Bloqueio por Palavra-chave",
+  "version": "1.0",
+  "description": "Bloqueia páginas cuja URL ou conteúdo contenha palavras-chave definidas no app Cold Turkey Clone, enquanto o bloqueio estiver ativo.",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhzd/rp//J2CSfg0zOeN4nwa6riP7du842Vu8EnRxNyBhiWRMP1JRimrFq2bdIW2GGrcaOgW0J6gxljIPVOPAZ/L+KRBqt6jpUyqSXnd0eM2Ik/wJEcvL6eSewUjSN7DN+lPptU0kIGoXYwPLoJQN0s6qtTYBPFYtWtdQ3SOTibopwTLk3x6uCcQFDWNDLUz5BvtAOcrppPI60d0X1xduk/sjrvVazIx96j+0ugEZARLiQ4hY1xlpMnD3oSr9wnhhuVow2/jGrB0SMtkiqyndT/ZK6DjrkIo8vY0hqFw3QFckwUqmWmKqKaI3hi9ANwlU7kI4yXfgMqg1UjXIb8fVAwIDAQAB",
+  "permissions": ["tabs", "webNavigation", "scripting"],
+  "host_permissions": ["http://*/*", "https://*/*", "http://127.0.0.1:57411/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["blocked.html"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

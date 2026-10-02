@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>Watchdog</AssemblyName>
+    <RootNamespace>ColdTurkeyClone.Watchdog</RootNamespace>
+    <UserSecretsId>dotnet-Watchdog</UserSecretsId>
+
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>true</SelfContained>
+    <PublishSingleFile>false</PublishSingleFile>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Text.Json" Version="8.0.5" />
+    <PackageReference Include="System.Management" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="8.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\App\Models\BlockList.cs" Link="Models\BlockList.cs" />
+    <Compile Include="..\App\Services\StateManager.cs" Link="Services\StateManager.cs" />
+    <Compile Include="..\App\Services\HostsFileManager.cs" Link="Services\HostsFileManager.cs" />
+    <Compile Include="..\App\Services\SafeSearchDomains.cs" Link="Services\SafeSearchDomains.cs" />
+    <Compile Include="..\App\Services\HostsWatcher.cs" Link="Services\HostsWatcher.cs" />
+    <Compile Include="..\App\Services\ProcessBlocker.cs" Link="Services\ProcessBlocker.cs" />
+    <Compile Include="..\App\Services\ProcessStartWatcher.cs" Link="Services\ProcessStartWatcher.cs" />
+    <Compile Include="..\App\Services\BrowserPolicyManager.cs" Link="Services\BrowserPolicyManager.cs" />
+    <Compile Include="..\App\Services\LocalStateServer.cs" Link="Services\LocalStateServer.cs" />
+    <Compile Include="..\App\Services\FolderProtection.cs" Link="Services\FolderProtection.cs" />
+    <Compile Include="..\App\Services\ExtensionInstaller.cs" Link="Services\ExtensionInstaller.cs" />
+    <Compile Include="..\App\Services\PermanentProtections.cs" Link="Services\PermanentProtections.cs" />
+    <Compile Include="..\App\Services\Logger.cs" Link="Services\Logger.cs" />
+  </ItemGroup>
+
+</Project>
